@@ -1,18 +1,29 @@
-class bob{
-    constructor(x, y,radius) {
-        var options = {
-            'isStatic': false,
-            'restitution':0.3,
-            'friction':0.5,
-            'density':1.2
-        }
-        this.body = Bodies.circle(x, y, radius, options);
-        this.radius = radius;
-        World.add(world, this.body);
+class bob {
+    constructor(x, y, radius) {
+      var options = {
+          'isStatic':false,
+          'restitution':1,
+          'friction':0,
+          'density':1
       }
-      display(){
-        var pos =this.body.position;
-        fill("pink");
-        circle(pos.x, pos.y, this.radius);
-      }
-}
+      this.body = Bodies.circle(x, y, radius, options);
+      this.radius = radius;
+      
+      
+      World.add(world, this.body);
+    }
+    display(){
+      var pos =this.body.position;
+      var angle = this.body.angle;
+      push();
+      translate(pos.x, pos.y);
+      rotate(angle);
+      ellipseMode(CENTER);
+      strokeWeight(8);
+      stroke(rgb(231, 231, 222));
+      fill(rgb(6, 9, 48));
+      ellipse(0, 0, this.radius, this.radius);
+      pop();
+    }
+  };
+  
